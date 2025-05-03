@@ -1,0 +1,144 @@
+Build a Reddit-style full-stack discussion platform called **“v Space”** using **React**, **TailwindCSS**, **Express.js**, and **Neon (PostgreSQL)**.
+
+---
+
+## 🔧 Features & Requirements:
+
+### 1. 👤 First-Time Visitor:
+- Ask for **Name**, **Email**, and **Gender** on first visit.
+- Save to `localStorage`.
+- Show “Welcome back, [Name]!” after first visit.
+- No user authentication required.
+
+---
+
+### 2. 🗂️ Sidebar Categories:
+List of categories shown in sidebar:
+- All Posts (show all except Gossips)
+- Technology
+- Gaming
+- Movies
+- Music
+- Media Station
+- Gossips (anonymized)
+- Campus Tour
+
+---
+
+### 3. 📝 Post Creation Rules by Category:
+
+#### ✅ General:
+- All posts must have: title, content, and optional media (image/video).
+- Store author name from `localStorage`.
+
+#### 🧠 **Technology**:
+- Allow users to optionally mark post as **“Idea”** with a checkbox.
+- If checked, style post differently (highlight, tag, background color).
+
+#### 🎮 **Gaming**, 🎶 **Music**, 🎬 **Movies**:
+- Do **NOT** show category dropdown in creation form (it's implied by selected section).
+- Allow tags for **genre** and **language** instead.
+
+#### 📸 **Media Station**:
+- Like Instagram:
+  - Users can post media (photo or video).
+  - No comments allowed.
+  - Only likes.
+
+#### 🙊 **Gossips**:
+- Show **author as “Anonymous”** in all posts and comments.
+- Otherwise behaves like regular post section.
+
+#### 🏫 **Campus Tour**:
+- Free-form posts about mess food, facilities, rants, etc.
+- Allow comments.
+- Encourage candid/unfiltered posts.
+
+---
+
+### 4. 💾 Backend with Neon (PostgreSQL):
+Use Express + Neon to build the backend:
+
+Tables:
+- `users` (id, name, email, gender)
+- `posts` (id, title, content, media, category, is_idea, genre, language, author_id, created_at)
+- `comments` (id, post_id, content, author_id, created_at)
+- `likes` (id, user_id, post_id)
+- `media_likes` (for media station)
+
+---
+
+### 5. 🧠 Forum Functionality:
+- Create / Edit / Delete posts and comments.
+- Like system (1 per user per post).
+- Sorting by:
+  - Most Recent
+  - Most Liked
+- Search by title/content.
+- Filter by category.
+- Highlight “Idea” posts in tech.
+
+---
+
+### 6. 🎨 TailwindCSS Theme (add this to `tailwind.config.js`):
+
+```js
+import { type Config } from "tailwindcss";
+
+const config = {
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(220, 20%, 5%)",
+        foreground: "hsl(0, 0%, 94%)",
+        card: "hsl(220, 20%, 7%)",
+        "card-foreground": "hsl(0, 0%, 94%)",
+        primary: "hsl(218, 100%, 66%)", // #3772FF
+        secondary: "hsl(220, 18%, 12%)",
+        muted: "hsl(220, 15%, 15%)",
+        "muted-foreground": "hsl(218, 10%, 70%)",
+        accent: "hsl(218, 100%, 66%)",
+        border: "hsl(220, 15%, 15%)",
+        input: "hsl(220, 15%, 15%)",
+        ring: "hsl(218, 100%, 66%)",
+      },
+      borderRadius: {
+        DEFAULT: "0.5rem",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
+```
+
+---
+
+### 7. 📦 Page Layout:
+- **Left Sidebar**: Category navigation (highlight current).
+- **Center Feed**: Posts (with comments or likes as per category).
+- **Right Sidebar**:
+  - **Community Guidelines Box** with simple rules (e.g., “Be respectful. No spam. Respect privacy.”)
+
+---
+
+### 8. 🧠 Bonus (Optional):
+- Avatars from name initials.
+- Like animation.
+- Save scroll position per category.
+- Responsive layout for mobile.
+
+---
+
+**Stack**:
+- React + Tailwind (frontend)
+- Express.js + Neon/Postgres (backend)
+- LocalStorage for non-auth user info
+- Deployed on Replit or Vercel
+
+---
+
+Deliver working full-stack app with above features. Project name: `v Space Forum`.

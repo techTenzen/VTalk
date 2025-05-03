@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 20% 5%;
+  --foreground: 0 0% 94%;
+  --muted: 220 15% 15%;
+  --muted-foreground: 218 10% 70%;
+  --popover: 220 20% 5%;
+  --popover-foreground: 0 0% 94%;
+  --card: 220 20% 7%;
+  --card-foreground: 0 0% 94%;
+  --border: 220 15% 15%;
+  --input: 220 15% 15%;
+  --primary: 218 100% 66%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 220 18% 12%;
+  --secondary-foreground: 0 0% 94%;
+  --accent: 218 100% 66%;
+  --accent-foreground: 0 0% 94%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 218 100% 66%;
+  --radius: 0.5rem;
+
+  /* Chart colors */
+  --chart-1: 218 100% 66%;
+  --chart-2: 280 100% 60%;
+  --chart-3: 160 100% 40%;
+  --chart-4: 40 100% 50%;
+  --chart-5: 0 100% 60%;
+
+  /* Sidebar colors (same as main theme for now) */
+  --sidebar-background: 220 20% 5%;
+  --sidebar-foreground: 0 0% 94%;
+  --sidebar-primary: 218 100% 66%;
+  --sidebar-primary-foreground: 211 100% 99%;
+  --sidebar-accent: 218 100% 66%;
+  --sidebar-accent-foreground: 0 0% 94%;
+  --sidebar-border: 220 15% 15%;
+  --sidebar-ring: 218 100% 66%;
+}
+
+/* Dark mode is always enabled for our app */
+.dark {
+  --background: 220 20% 5%;
+  --foreground: 0 0% 94%;
+  --muted: 220 15% 15%;
+  --muted-foreground: 218 10% 70%;
+  --popover: 220 20% 5%;
+  --popover-foreground: 0 0% 94%;
+  --card: 220 20% 7%;
+  --card-foreground: 0 0% 94%;
+  --border: 220 15% 15%;
+  --input: 220 15% 15%;
+  --primary: 218 100% 66%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 220 18% 12%;
+  --secondary-foreground: 0 0% 94%;
+  --accent: 218 100% 66%;
+  --accent-foreground: 0 0% 94%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 218 100% 66%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .h-screen-minus-header {
+    height: calc(100vh - 4rem);
+  }
+  
+  .post-idea {
+    @apply border-l-4 border-amber-500 bg-opacity-70;
+  }
+}
+
+.avatar {
+  @apply flex items-center justify-center rounded-full bg-primary text-white font-semibold;
+}
+
+.avatar-anonymous {
+  @apply bg-gray-600;
+}
