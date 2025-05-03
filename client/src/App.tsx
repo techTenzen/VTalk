@@ -16,6 +16,9 @@ import CategoryPage from "@/pages/CategoryPage";
 import Search from "@/pages/Search";
 import NotFound from "@/pages/not-found";
 import { useUserContext } from "@/components/UserProvider";
+import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
+const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
 
 // Main layout component with sidebars and content
 function Layout({ children }: { children: React.ReactNode }) {
@@ -104,16 +107,22 @@ function Router() {
 
 // Main App component with providers
 function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <UserProvider>
-          <Toaster />
-          <Router />
-        </UserProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+    return (
+        <ClerkProvider publishableKey={clerkKey}>
+            <QueryClientProvider client={queryClient}>
+                <TooltipProvider>
+                    <UserProvider>
+                        <Toaster />
+                        <SignedIn>
+                            <Router />
+                        </SignedIn>
+                        <SignedOut>
+                            <RedirectToSignIn />
+                        </SignedOut>
+                    </UserProvider>
+                </TooltipProvider>
+            </QueryClientProvider>
+        </ClerkProvider>
+    );
 }
-
 export default App;

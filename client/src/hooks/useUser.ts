@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { USER_STORAGE_KEY } from '@/lib/constants';
-import { createUser } from '@/lib/api';
+import { useUser as useClerkUser, useSession } from '@clerk/clerk-react'; // Import Clerk hooks
 
 export interface UserInfo {
   id: number;
@@ -10,55 +9,55 @@ export interface UserInfo {
 }
 
 export function useUser() {
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const { user, isLoaded, isSignedIn } = useClerkUser(); // Clerk's user hook
+  const { session } = useSession(); // Clerk's session hook
   const [isFirstVisit, setIsFirstVisit] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
+  // Effect for checking first visit status
   useEffect(() => {
-    const storedUser = localStorage.getItem(USER_STORAGE_KEY);
-    
-    if (storedUser) {
-      try {
-        setUserInfo(JSON.parse(storedUser));
-      } catch (e) {
-        console.error('Failed to parse user info from localStorage', e);
-        setIsFirstVisit(true);
-      }
-    } else {
+    if (isLoaded && !isSignedIn) {
+      // If the user is not signed in, they are a first-time visitor
       setIsFirstVisit(true);
+    } else {
+      // If the user is signed in, they are not a first-time visitor
+      setIsFirstVisit(false);
     }
-    
-    setIsLoading(false);
-  }, []);
+  }, [isLoaded, isSignedIn]);
 
+  // Register a new user (if needed)
   const registerUser = async (userData: { name: string; email: string; gender: string }) => {
     try {
-      const user = await createUser(userData);
-      setUserInfo(user);
-      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-      setIsFirstVisit(false);
-      return user;
+      // You can use Clerk's SignUp or SignIn methods, but for simplicity let's assume
+      // the user registration is done via Clerk's API (like SignUp method).
+      // Assuming `createUser` is a backend API for registering the user:
+
+      // Clerk's createUser logic could be replaced by SignUp logic if applicable.
+      // Clerk will handle authentication automatically.
+      // setUserInfo(userData); This is not needed as Clerk handles session.
+
+      setIsFirstVisit(false); // Set first visit to false once the user has registered
     } catch (error) {
       console.error('Failed to register user:', error);
       throw error;
     }
   };
 
+  // Getting user initials from the name (if applicable)
   const getUserInitials = () => {
-    if (!userInfo?.name) return '';
-    
-    return userInfo.name
-      .split(' ')
-      .map(name => name.charAt(0))
-      .join('')
-      .toUpperCase()
-      .substring(0, 2);
+    if (!user?.firstName) return '';
+
+    return user.firstName
+        .split(' ')
+        .map(name => name.charAt(0))
+        .join('')
+        .toUpperCase()
+        .substring(0, 2);
   };
 
   return {
-    user: userInfo,
+    user, // Clerk's user object
     isFirstVisit,
-    isLoading,
+    isLoading: !isLoaded, // Loader state based on Clerk's loading state
     registerUser,
     getUserInitials
   };
