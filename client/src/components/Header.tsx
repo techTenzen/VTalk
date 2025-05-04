@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'wouter';
 import { useUserContext } from './UserProvider';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Bell, Menu } from 'lucide-react';
+import {Search, Bell, Menu, Merge, Orbit} from 'lucide-react';
 
 interface HeaderProps {
   onOpenMobileMenu: () => void;
@@ -26,21 +26,14 @@ export function Header({ onOpenMobileMenu }: HeaderProps) {
     <header className="bg-card border-b border-border sticky top-0 z-40">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden mr-2" 
-            onClick={onOpenMobileMenu}
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-          <span 
-            className="text-2xl text-primary font-heading font-bold cursor-pointer" 
+        <div
+            className="flex items-center space-x-2 cursor-pointer"
             onClick={() => navigate('/')}
-          >
-            V Exchange
-          </span>
+        >
+          <Orbit className="h-6 w-6 text-primary" />
+          <span className="text-2xl text-primary font-heading font-bold">
+    V Exchange
+  </span>
         </div>
         
         {/* Search bar - desktop */}
