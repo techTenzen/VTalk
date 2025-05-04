@@ -13,34 +13,38 @@
   --card-foreground: 0 0% 94%;
   --border: 220 15% 15%;
   --input: 220 15% 15%;
-  --primary: 218 100% 66%;
-  --primary-foreground: 211 100% 99%;
+
+  /* Unified orange theme */
+  --primary: 10 100% 50%;
+  --primary-foreground: 0 0% 100%;
   --secondary: 220 18% 12%;
   --secondary-foreground: 0 0% 94%;
-  --accent: 218 100% 66%;
-  --accent-foreground: 0 0% 94%;
+  --accent: 10 100% 50%;
+  --accent-foreground: 0 0% 100%;
+
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 218 100% 66%;
+  --ring: 10 100% 50%;
   --radius: 0.5rem;
 
-  /* Chart colors */
-  --chart-1: 218 100% 66%;
-  --chart-2: 280 100% 60%;
-  --chart-3: 160 100% 40%;
-  --chart-4: 40 100% 50%;
-  --chart-5: 0 100% 60%;
+  /* Chart colors (replace blue/purple/green) */
+  --chart-1: 10 100% 50%;   /* Bright Orange */
+  --chart-2: 35 100% 50%;   /* Amber/Orange-Yellow */
+  --chart-3: 0 80% 60%;     /* Soft Red */
+  --chart-4: 40 100% 40%;   /* Muted Yellow/Orange */
+  --chart-5: 0 0% 70%;      /* Light Grey */
 
-  /* Sidebar colors (same as main theme for now) */
-  --sidebar-background: 220 20% 5%;
+  /* Sidebar and additional UI elements */
+  --sidebar-background: 0 0% 0%;
   --sidebar-foreground: 0 0% 94%;
-  --sidebar-primary: 218 100% 66%;
-  --sidebar-primary-foreground: 211 100% 99%;
-  --sidebar-accent: 218 100% 66%;
+  --sidebar-primary: 10 100% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 10 100% 50%;
   --sidebar-accent-foreground: 0 0% 94%;
   --sidebar-border: 220 15% 15%;
-  --sidebar-ring: 218 100% 66%;
+  --sidebar-ring: 10 100% 50%;
 }
+
 
 /* Dark mode is always enabled for our app */
 .dark {

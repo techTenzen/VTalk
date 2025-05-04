@@ -39,7 +39,7 @@ export function Header({ onOpenMobileMenu }: HeaderProps) {
             className="text-2xl text-primary font-heading font-bold cursor-pointer" 
             onClick={() => navigate('/')}
           >
-            v Space
+            V Exchange
           </span>
         </div>
         

@@ -1,14 +1,15 @@
 // Categories available in the platform
 export const CATEGORIES = [
-  { id: 'all', name: 'All Posts', icon: 'globe' },
-  { id: 'technology', name: 'Technology', icon: 'microchip' },
-  { id: 'gaming', name: 'Gaming', icon: 'gamepad' },
-  { id: 'movies', name: 'Movies', icon: 'film' },
+  { id: 'all', name: 'All Posts', icon: 'all-posts' },
+  { id: 'technology', name: 'Technology', icon: 'technology' },
+  { id: 'gaming', name: 'Gaming', icon: 'gaming' },
+  { id: 'movies', name: 'Movies', icon: 'movies' },
   { id: 'music', name: 'Music', icon: 'music' },
-  { id: 'media_station', name: 'Media Station', icon: 'images' },
-  { id: 'gossips', name: 'Gossips', icon: 'user-secret' },
-  { id: 'campus_tour', name: 'Campus Tour', icon: 'university' }
+  { id: 'media-station', name: 'Media Station', icon: 'media-station' },
+  { id: 'gossips', name: 'Gossips', icon: 'gossips' },
+  { id: 'campus-tour', name: 'Campus Tour', icon: 'campus-tour' }
 ];
+
 
 // Community guidelines to display in the right sidebar
 export const COMMUNITY_GUIDELINES = [
